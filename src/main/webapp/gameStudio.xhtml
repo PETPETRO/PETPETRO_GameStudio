@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"></link>
+
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<h:head>
+	<title>Game studio</title>
+</h:head>
+<body
+	style="background-image: url(resources/gfx/gameStudio.jpg); background-position: center; background-repeat: no-repeat; height: 100%;">
+
+	<div align="center" style="margin-top: 10%">
+		<DIV style="display: inline;">
+			<DIV
+				style=" float: left; margin-left: 10%; width: 35%; margin-right: 10%;" >
+				<a href="http://localhost:8080/gameStudio/stones"> <IMG
+					alt="jiojo" src="resources/gfx/stones.png"
+					style="border: 0; width: 100%;" />
+				</a> <BR />
+				<H1 style="color: black;">
+					<h:outputText
+						value="#{ratingController.getAverageRating('stones')}/10" />
+				</H1>
+
+
+			</DIV>
+
+			<DIV style="float: left; width: 35%;">
+				<a href="http://localhost:8080/gameStudio/mines"> <IMG
+					alt="jiojo" src="resources/gfx/mines.png"
+					style="border: 0; width: 100%" /></a> <BR /> <BR /> <BR />
+				<H1 style="color: black;">
+					<h:outputText
+						value="#{ratingController.getAverageRating('minesweeper')}/10" />
+				</H1>
+			</DIV>
+
+		</DIV>
+
+
+
+		<DIV style="display: inline;">
+
+
+			<DIV
+				style="float: left; margin-left: 10%; width: 35%; margin-right: 10%;">
+				<a href="http://localhost:8080/gameStudio/greeting.jsf"><BR />
+					<BR /> <BR /> <IMG alt="jiojo" src="resources/gfx/guess.png"
+					style="border: 0; width: 100%" /> </a> <BR />
+				<H1 style="color: black;">
+					<h:outputText
+						value="#{ratingController.getAverageRating('guessNumber')}/10" />
+				</H1>
+
+			</DIV>
+			<DIV style="float: left; width: 35%;">
+				<a href="http://localhost:8080/gameStudio/puzzles"> <IMG
+					alt="jiojo" src="resources/gfx/puzzles.png"
+					style="border: 0; width: 100%" /></a> <BR />
+				<H1 style="color: black;">
+					<h:outputText
+						value="#{ratingController.getAverageRating('puzzle')}/10" />
+				</H1>
+			</DIV>
+		</DIV>
+	</div>
+	<BR />
+	<div style="display: inline;">
+		<div style="margin-left: 45%; margin-right: 45%; text-align: center;">
+			<h:link rendered="#{empty user || userController.logged==false}"
+				value="Register " outcome="registration.jsf" style="color: black;"></h:link>
+
+			<h:link rendered="#{empty user || userController.logged==false}"
+				value="   Login" outcome="login.jsf" style="color: black;"></h:link>
+
+
+			<h:form>
+				<h:commandLink rendered="#{userController.logged==true}"
+					action="#{userController.loggOut}" value="Log out"
+					style="color: black;" />
+			</h:form>
+
+			<h:outputText rendered="#{userController.logged==true}"
+				value="You are logged as #{user.name}" style="color: black;" />
+
+
+		</div>
+	</div>
+
+
+	<footer style="text-align: center; background: transparent;"
+		class="navbar navbar-fixed-bottom">
+		<p style="color: black">&#xA9; Created by Peter Petrovaj.</p>
+	</footer>
+</body>
+
+</html>
+
