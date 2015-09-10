@@ -1,52 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8' ?>
 
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"></link>
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:o="http://omnifaces.org/ui"
+	template="/WEB-INF/templates/bestTimes.xhtml">
 
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<ui:param name="bestTimes" value="guessNumber" />
+	<ui:param name="path"
+		value="http://localhost:8080/gameStudio/greeting.jsf" />
 
-
-<script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<h:head>
-	<title>Registration</title>
-
-</h:head>
-
-<body
-	style="background-image: url(resources/gfx/gameStudio.jpg); background-position: center; background-repeat: no-repeat; height: 100%;">
-
-
-	<div style="width: 100%; margin-top: 3%" align="center">
-
-
-		<h:panelGrid columns="3">
-			<h:form>
-
-				<ol style="list-style-type: decimal;">
-					<ui:repeat value="#{scoreController.bestPlayers('guessNumber')}"
-						var="t">
-						<li style="color: white"><font color="black"><h:outputText
-									value="#{t}" /></font></li>
-					</ui:repeat>
-				</ol>
-
-			</h:form>
-		</h:panelGrid>
+	<div>
+		<o:resourceInclude path="/bestTimesGuessNumber" />
 	</div>
 
-	<footer style="text-align: center; background: transparent;"
-		class="navbar navbar-fixed-bottom">
-		<p style="color: black">&#xA9; Created by Peter Petrovaj.</p>
-	</footer>
-</body>
-</html>
-
+</ui:composition>
 
 

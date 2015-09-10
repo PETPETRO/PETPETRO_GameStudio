@@ -1,66 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/bacgroundFooter.xhtml">
+	<ui:define name="content">
 
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"></link>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<h:head>
+			<title>Login</title>
+		</h:head>
+		<div style="width: 100%; margin-top: 10%;" align="center">
 
-<h:head>
-	<title>Login</title>
+			<h:form>
+				<h:panelGrid columns="3">
+					<font style="color: white;">Name:</font>
+					<h:inputText id="log_name" value="#{user.name}">
+						<f:validateLength minimum="5" maximum="10">
 
-</h:head>
-<body
-	style="background-image: url(resources/gfx/gameStudio.jpg); background-position: center; background-repeat: no-repeat; height: 100%;">
+						</f:validateLength>
+					</h:inputText>
+					<h:message for="log_name" errorClass="invalid" style="color: red" />
 
-	<div style="width: 100%; margin-top: 5%;" align="center">
+					<font style="color: white;">Password:</font>
+					<h:inputSecret id="log_passwd" value="#{user.password}">
+						<f:validateLength minimum="5" maximum="10"></f:validateLength>
+						<f:validateRegex pattern=".*\d.*"></f:validateRegex>
+					</h:inputSecret>
+					<h:message for="log_passwd" errorClass="invalid" style="color: red" />
+					<h:commandButton action="#{userController.loggUser()}" value="Log!" />
+				</h:panelGrid>
+			</h:form>
 
+			<br />
+			<div style="display: inline;">
 
+				<h:outputText style=" text-align: center;"
+					rendered="#{userController.logged==true}"
+					value="Incorrect name or password. " />
 
-
-		<h:form>
-			<h:panelGrid columns="3">
-				<font style="color: white;">Name:</font>
-				<h:inputText id="log_name" value="#{user.name}">
-					<f:validateLength minimum="5" maximum="10">
-					</f:validateLength>
-				</h:inputText>
-				<h:message for="log_name" errorClass="invalid" style="color: red" />
-
-				<font style="color: white;">Password:</font>
-				<h:inputSecret id="log_passwd" value="#{user.password}">
-					<f:validateLength minimum="5" maximum="10"></f:validateLength>
-					<f:validateRegex pattern=".*\d.*"></f:validateRegex>
-				</h:inputSecret>
-				<h:message for="log_passwd" errorClass="invalid" style="color: red" />
-				<h:commandButton action="#{userController.loggUser()}" value="Log!" />
-			</h:panelGrid>
-		</h:form>
-
-		<br />
-		<div style="display: inline;">
-
-			<h:outputText style=" text-align: center;"
-				rendered="#{userController.logged==true}"
-				value="Incorrect name or password. " />
+			</div>
 
 		</div>
-
-	</div>
-
-	<footer style="text-align: center; background: transparent;"
-		class="navbar navbar-fixed-bottom">
-		<p style="color: black">&#xA9; Created by Peter Petrovaj.</p>
-	</footer>
-</body>
-
-</html>
+	</ui:define>
+</ui:composition>
 
 
 

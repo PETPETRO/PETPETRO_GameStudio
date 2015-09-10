@@ -14,19 +14,28 @@ import entity.*;
 @RequestScoped
 public class CommentController {
 	@Inject
-	Comment comment;
+	private CommentDAO commentDao;
 	@Inject
-	CommentDAO commentDao;
+	private User user;
 	@Inject
-	User user;
+	private Comment comment;
 
-	public String saveComment(String comment, String gameName, String path) {
-		commentDao.saveComment(gameName, user.getName(), comment);
+	private String actualComment;
+
+	public String saveComment(String gameName, String path) {
+		commentDao.saveComment(gameName, user.getName(), actualComment);
 		return path;
 	}
 
 	public List<Comment> getAllComments(String gameName) {
-
 		return commentDao.getComments(gameName);
+	}
+
+	public String getActualComment() {
+		return actualComment;
+	}
+
+	public void setActualComment(String actualComment) {
+		this.actualComment = actualComment;
 	}
 }

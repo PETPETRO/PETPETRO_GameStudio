@@ -1,113 +1,165 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:a4j="http://richfaces.org/a4j"
-	xmlns:rich="http://richfaces.org/rich">
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/WEB-INF/templates/bacgroundFooter.xhtml">
 
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"></link>
+	<script>
+		//<![CDATA[
+		function changeImage(id) {
+
+			var a = parseInt(id.charAt(1));
+			var b = id.charAt(0);
+
+			for (var i = 0; i <= a; i++) {
+				document.getElementById(b + i).setAttribute("width", "80px");
+			}
+
+			if (document.getElementById(id).getAttribute("src") == "resources/gfx/star.png") {
+				for (var i = 0; i <= a; i++) {
+					document.getElementById(b + i).setAttribute("src",
+							"resources/gfx/starYellow.png");
+				}
+				return;
+			}
+
+			if (document.getElementById(id).getAttribute("src") == "resources/gfx/starYellow.png") {
+				for (var i = 0; i <= 9; i++) {
+					document.getElementById(b + i).setAttribute("src",
+							"resources/gfx/star.png");
+				}
+				return;
+			}
+		}
+		//]]>
+	</script>
+
+	<ui:define name="content">
+
+		<h:head>
+			<title>Game studio</title>
+		</h:head>
 
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-
-<script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-<h:head>
-	<title>Game studio</title>
-</h:head>
-<body
-	style="background-image: url(resources/gfx/gameStudio.jpg); background-position: center; background-repeat: no-repeat; height: 100%;">
-
-	<div align="center" style="margin-top: 10%">
-		<DIV style="display: inline;">
-			<DIV
-				style=" float: left; margin-left: 10%; width: 35%; margin-right: 10%;" >
-				<a href="http://localhost:8080/gameStudio/stones"> <IMG
+		<DIV class="row col-12" style="display: flex; margin-top: 10%">
+			<DIV class="col-2" />
+			<DIV class="col-3" style="text-align: center;">
+				<a href="http://localhost:8080/gameStudio/stones.jsf"> <IMG
 					alt="jiojo" src="resources/gfx/stones.png"
 					style="border: 0; width: 100%;" />
-				</a> <BR />
-				<H1 style="color: black;">
-					<h:outputText
-						value="#{ratingController.getAverageRating('stones')}/10" />
-				</H1>
-
-
+				</a>
 			</DIV>
-
-			<DIV style="float: left; width: 35%;">
-				<a href="http://localhost:8080/gameStudio/mines"> <IMG
+			<DIV class="col-2" />
+			<DIV class="col-3" style="text-align: center;">
+				<a href="http://localhost:8080/gameStudio/mines.jsf"> <IMG
 					alt="jiojo" src="resources/gfx/mines.png"
-					style="border: 0; width: 100%" /></a> <BR /> <BR /> <BR />
-				<H1 style="color: black;">
-					<h:outputText
-						value="#{ratingController.getAverageRating('minesweeper')}/10" />
-				</H1>
+					style="border: 0; width: 100%" /></a>
 			</DIV>
-
+			<DIV class="col-2" />
 		</DIV>
 
 
+		<DIV class="row col-12" style="display: flex;">
+			<DIV class="col-2" />
+			<DIV class="col-3" style="text-align: center;">
 
-		<DIV style="display: inline;">
-
-
-			<DIV
-				style="float: left; margin-left: 10%; width: 35%; margin-right: 10%;">
-				<a href="http://localhost:8080/gameStudio/greeting.jsf"><BR />
-					<BR /> <BR /> <IMG alt="jiojo" src="resources/gfx/guess.png"
-					style="border: 0; width: 100%" /> </a> <BR />
-				<H1 style="color: black;">
-					<h:outputText
-						value="#{ratingController.getAverageRating('guessNumber')}/10" />
-				</H1>
+				<h:form>
+					<ui:repeat
+						value="#{ratingController.getAverageRatingInStars('stones')}">
+						<h:graphicImage value="/resources/gfx/fullStar.jpg" width="50px" />
+					</ui:repeat>
+				</h:form>
 
 			</DIV>
-			<DIV style="float: left; width: 35%;">
-				<a href="http://localhost:8080/gameStudio/puzzles"> <IMG
+			<DIV class="col-2" />
+			<DIV class="col-3" style="text-align: center;">
+
+				<h:form>
+					<ui:repeat
+						value="#{ratingController.getAverageRatingInStars('minesweeper')}">
+						<h:graphicImage value="/resources/gfx/fullStar.jpg" width="50px" />
+					</ui:repeat>
+				</h:form>
+
+			</DIV>
+			<DIV class="col-2" />
+
+		</DIV>
+
+		<DIV class="row col-12" style="display: flex; height: 50px;"></DIV>
+
+
+		<DIV class="row col-12" style="display: flex;">
+			<DIV class="col-2" />
+			<DIV class="col-3" style="text-align: center;">
+				<a href="http://localhost:8080/gameStudio/greeting.jsf"><IMG
+					alt="jiojo" src="resources/gfx/guess.png"
+					style="border: 0; width: 100%" /> </a>
+			</DIV>
+			<DIV class="col-2" />
+			<DIV class="col-3" style="text-align: center;">
+				<a href="http://localhost:8080/gameStudio/puzzles.jsf"> <IMG
 					alt="jiojo" src="resources/gfx/puzzles.png"
-					style="border: 0; width: 100%" /></a> <BR />
-				<H1 style="color: black;">
-					<h:outputText
-						value="#{ratingController.getAverageRating('puzzle')}/10" />
-				</H1>
+					style="border: 0; width: 100%" /></a>
 			</DIV>
+			<DIV class="col-2" />
 		</DIV>
-	</div>
-	<BR />
-	<div style="display: inline;">
-		<div style="margin-left: 45%; margin-right: 45%; text-align: center;">
-			<h:link rendered="#{empty user || userController.logged==false}"
-				value="Register " outcome="registration.jsf" style="color: black;"></h:link>
-
-			<h:link rendered="#{empty user || userController.logged==false}"
-				value="   Login" outcome="login.jsf" style="color: black;"></h:link>
 
 
-			<h:form>
+		<DIV class="row col-12" style="display: flex;">
+			<DIV class="col-2" />
+			<DIV class="col-3" style="text-align: center;">
+				<h:form>
+					<ui:repeat
+						value="#{ratingController.getAverageRatingInStars('guessNumber')}">
+						<h:graphicImage value="/resources/gfx/fullStar.jpg" width="50px" />
+					</ui:repeat>
+				</h:form>
+
+			</DIV>
+			<DIV class="col-2" />
+			<DIV class="col-3" style="text-align: center;">
+				<h:form>
+					<ui:repeat
+						value="#{ratingController.getAverageRatingInStars('puzzle')}">
+						<h:graphicImage value="/resources/gfx/fullStar.jpg" width="50px" />
+					</ui:repeat>
+				</h:form>
+			</DIV>
+			<DIV class="col-2" />
+		</DIV>
+
+		<div class="row col-2" style="margin-left: auto; margin-right: auto;">
+			<h:form style="text-align: center;" align="center">
 				<h:commandLink rendered="#{userController.logged==true}"
 					action="#{userController.loggOut}" value="Log out"
-					style="color: black;" />
+					style="color:black;" />
 			</h:form>
+		</div>
 
+		<div class="row col-12" style="text-align: center;">
 			<h:outputText rendered="#{userController.logged==true}"
 				value="You are logged as #{user.name}" style="color: black;" />
-
-
 		</div>
-	</div>
 
 
-	<footer style="text-align: center; background: transparent;"
-		class="navbar navbar-fixed-bottom">
-		<p style="color: black">&#xA9; Created by Peter Petrovaj.</p>
-	</footer>
-</body>
 
-</html>
+		<div class="row col-1" style="text-align: center;">
+			<h:link rendered="#{empty user || userController.logged==false}"
+				value="Register " outcome="registration.jsf" style="color: black;"></h:link>
+		</div>
+
+		<div class="row col-1" style="text-align: center;">
+			<h:link rendered="#{empty user || userController.logged==false}"
+				value="   Login" outcome="login.jsf" style="color: black;"></h:link>
+		</div>
+
+
+
+	</ui:define>
+</ui:composition>
 

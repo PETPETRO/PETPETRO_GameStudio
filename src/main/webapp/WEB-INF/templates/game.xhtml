@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/WEB-INF/templates/bacgroundFooter.xhtml">
+
+
+
+	<ui:define name="content">
+
+		<script>
+			//<![CDATA[
+
+			function changeImage(id) {
+
+				var a = parseInt(id.charAt(1));
+				var b = id.charAt(0);
+
+				for (var i = 0; i <= a; i++) {
+					var w = document.getElementById(b + i)
+							.getAttribute("width");
+					w = parseInt(w);
+					w = w * 2;
+
+					document.getElementById(b + i).setAttribute("width",
+							w + "px");
+					document.getElementById(b + i).setAttribute("src",
+							"resources/gfx/fullStar.jpg");
+				}
+			}
+			//]]>
+		</script>
+
+
+
+
+
+
+		<div class="row col-12" style="display: flex; margin-bottom:">
+			<div class="col-12" style="text-align: center;">
+				<a href=" ?field=1"> <img src="resources/gfx/newGame.png"
+					alt="newGame.png" />
+				</a>
+			</div>
+		</div>
+		<div class="row col-12"
+			style="width: 100%; display: flex; text-align: center;">
+
+			<div class="col-3" style="text-align: right;">
+				<div style="height: 33%"></div>
+				<div style="height: 33%">
+					<a href="http://localhost:8080/gameStudio/gameStudio.xhtml"
+						style="text-align: center;"> <img
+						src="resources/gfx/backspace.png" alt="backspace.png" />
+					</a>
+				</div>
+
+
+
+			</div>
+
+			<div class="col-6" align="center">
+				<ui:insert name="game">
+                    [Template content will be inserted here]
+         </ui:insert>
+			</div>
+
+
+
+			<div class="col-3" style="text-align: left">
+				<div style="height: 33%"></div>
+				<div style="height: 33%">
+					<h:link outcome="#{bestTimes}" style="color: black;">
+						<img src="resources/gfx/winner.png" alt="winner.png" />
+					</h:link>
+
+				</div>
+
+			</div>
+		</div>
+
+
+
+
+		<div style="text-align: center;">
+			<a href="http://localhost:8080/gameStudio/gameStudio.xhtml"
+				style="text-align: center;"> <img
+				src="resources/gfx/gameStudio.png" alt="gameStudio.png" />
+			</a>
+		</div>
+
+
+
+		<div style="text-align: center;">
+
+
+			<h:form rendered="#{user.name != null}">
+				<h:commandLink action="#{ratingController.saveRating(gameName,1)}"
+					style="color: transparent; ">
+					<img id="s0" src="resources/gfx/star.jpg" alt="star.png"
+						width="20px" onclick=" changeImage(id)" />
+				</h:commandLink>
+				<h:commandLink action="#{ratingController.saveRating(gameName,2)}"
+					style="color: transparent; ">
+					<img id="s1" src="resources/gfx/star.jpg" alt="starr.jpg"
+						width="20px" onclick="changeImage(id)" />
+				</h:commandLink>
+				<h:commandLink action="{ratingController.saveRating(gameName,3)}"
+					style="color: transparent;">
+					<img id="s2" src="resources/gfx/star.jpg" alt="star.png"
+						width="20px" onclick="changeImage(id)" />
+				</h:commandLink>
+				<h:commandLink action="#{ratingController.saveRating(gameName,4)}"
+					style="color: transparent;">
+					<img id="s3" src="resources/gfx/star.jpg" alt="star.png"
+						width="20px" onclick="changeImage(id)" />
+				</h:commandLink>
+				<h:commandLink action="#{ratingController.saveRating(gameName,5)}"
+					style="color: transparent;">
+					<img id="s4" src="resources/gfx/star.jpg" alt="star.png"
+						width="20px" onclick="changeImage(id)" />
+				</h:commandLink>
+				<h:commandLink action="#{ratingController.saveRating(gameName,6)}"
+					style="color: transparent;">
+					<img id="s5" src="resources/gfx/star.jpg" alt="star.png"
+						width="20px" onclick="changeImage(id)" />
+				</h:commandLink>
+				<h:commandLink action="#{ratingController.saveRating(gameName,7)}"
+					style="color: transparent;">
+					<img id="s6" src="resources/gfx/star.jpg" alt="star.png"
+						width="20px" onclick="changeImage(id)" />
+				</h:commandLink>
+				<h:commandLink action="#{ratingController.saveRating(gameName,8)}"
+					style="color: transparent;">
+					<img id="s7" src="resources/gfx/star.jpg" alt="star.png"
+						width="20px" onclick="changeImage(id)" />
+				</h:commandLink>
+				<h:commandLink action="#{ratingController.saveRating(gameName,9)}"
+					style="color: transparent;">
+					<img id="s8" src="resources/gfx/star.jpg" alt="star.png"
+						width="20px" onclick="changeImage(id)" />
+				</h:commandLink>
+				<h:commandLink action="#{ratingController.saveRating(gameName,10)}"
+					style="color: transparent;">
+					<img id="s9" src="resources/gfx/star.jpg" alt="star.png"
+						width="20px" onclick="changeImage(id) " />
+				</h:commandLink>
+			</h:form>
+
+
+		</div>
+		<hr />
+		<div style="text-align: left; margin-left: 2%; margin-right: 2%">
+			<h:form rendered="#{user.name != null}">
+				<h:inputText value="#{commentController.actualComment}"
+					style="  background: transparent ; width: 100%;border-radius: 10px;">
+				</h:inputText>
+				<h:commandButton
+					action="#{commentController.saveComment( gameName, path)}"
+					style="opacity:0;" />
+			</h:form>
+		</div>
+
+
+		<br />
+		<div
+			style="background-color: white; border-radius: 10px; margin-left: 2%; margin-right: 2%; width: 96%">
+			<div id="commentText">
+				<h:form>
+					<ui:repeat value="#{commentController.getAllComments(gameName)}"
+						var="t">
+						<font id="commentText"
+							style="font-style: bolt ; font-size: 1.3em;font-variant:small-caps  ">
+						<h:outputText value="#{t.playerName} :" /></font>
+						<font color="black"> <h:outputText value="#{t.comment}" /></font>
+						<br />
+					</ui:repeat>
+
+				</h:form>
+			</div>
+		</div>
+
+		<script>
+			//<![CDATA[
+
+			function colr() {
+
+				var hexChars = '0123456789ABCDEF'.split(''); // will split each character
+				var hexColor = '#';
+				for (var i = 0; i < 6; i++) {
+					hexColor += hexChars[Math.round(Math.random() * 15)]; // 0..15 = 16 hex range
+				}
+
+				document.getElementById("commentText").setAttribute("style",
+						"color:" + hexColor);
+			}
+
+			window.onload = colr();
+			//]]>
+		</script>
+
+	</ui:define>
+</ui:composition>

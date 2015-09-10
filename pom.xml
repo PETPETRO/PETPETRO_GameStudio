@@ -172,6 +172,8 @@
 			<scope>provided</scope>
 		</dependency>
 
+
+
 		<!-- Annotation processor that raising compilation errors whenever constraint 
 			annotations are incorrectly used. -->
 		<dependency>
@@ -211,6 +213,13 @@
 			<groupId>org.richfaces</groupId>
 			<artifactId>richfaces</artifactId>
 			<version>4.5.8.Final</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.omnifaces</groupId>
+			<artifactId>omnifaces</artifactId>
+			<version>2.1</version>
 		</dependency>
 
 	</dependencies>

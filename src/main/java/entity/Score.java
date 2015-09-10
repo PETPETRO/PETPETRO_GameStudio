@@ -1,23 +1,14 @@
 package entity;
 
-import java.util.List;
-
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Transient;
-
-import database.ScoreDAO;
 
 @Named
 @Entity
 
 public class Score<E> {
-
-	
 
 	@Id
 	@GeneratedValue
@@ -97,7 +88,6 @@ public class Score<E> {
 	public void setTime(long time) {
 		this.time = time;
 	}
-
 
 	@Override
 	public String toString() {

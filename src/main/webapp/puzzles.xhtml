@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:o="http://omnifaces.org/ui"
+	template="/WEB-INF/templates/game.xhtml">
+	<ui:define name="game">
+
+		<ui:param name="gameName" value="puzzle" />
+		<ui:param name="path" value="puzzles.jsf" />
+		<ui:param name="bestTimes" value="bestTimesPuzzle.xhtml" />
+
+		<div>
+			<o:resourceInclude path="/puzzles" />
+		</div>
+	</ui:define>
+</ui:composition>

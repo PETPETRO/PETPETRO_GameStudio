@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/WEB-INF/templates/bacgroundFooter.xhtml">
+	<ui:define name="content">
+		<h:head>
+			<title>Best Times</title>
+		</h:head>
+
+
+
+
+		<div class="row col-12"
+			style="width: 100%; margin-top: 10%; display: flex; text-align: center;">
+
+			<div class="col-5" style="text-align: right;">
+				<div style="height: 33%"></div>
+				<div style="height: 33%">
+					<a href="#{path}" style="text-align: center;"> <img
+						src="resources/gfx/backspace.png" alt="backspace.png" />
+					</a>
+				</div>
+
+
+
+			</div>
+
+			<div class="col-2" align="left"
+				style="background-color: white; border-radius: 10px; margin-left: 2%; margin-right: 2%;">
+				<div>
+					<h:panelGrid columns="3">
+						<h:form>
+							<ol style="list-style-type: decimal;">
+								<ui:repeat value="#{scoreController.bestPlayers(bestTimes)}"
+									var="t">
+									<li style="color: black;"><h:outputText
+											value="#{t.playerName.toUpperCase()}   " /> <h:outputText
+											value="#{t.time} " /> <h:outputText value="s" /></li>
+								</ui:repeat>
+							</ol>
+						</h:form>
+					</h:panelGrid>
+				</div>
+			</div>
+
+			<div class="col-5" style="text-align: left">
+				<div style="height: 33%"></div>
+				<div style="height: 33%">
+					<a href="http://localhost:8080/gameStudio/gameStudio.xhtml"
+						style="text-align: center;"> <img
+						src="resources/gfx/gameStudio.png" alt="gameStudio.png" />
+					</a>
+				</div>
+			</div>
+
+		</div>
+	</ui:define>
+</ui:composition>
+
+
+
+

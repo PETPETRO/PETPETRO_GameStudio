@@ -35,6 +35,7 @@ public class RatingDAO {
 	}
 
 	public Rating getRatingForUser(String playerName, String gameName) {
+		System.out.println(playerName + "----------------------------------");
 		return em
 				.createQuery("select r from Rating r where r.playerName=:playerName and r.gameName=:gameName",
 						Rating.class)
